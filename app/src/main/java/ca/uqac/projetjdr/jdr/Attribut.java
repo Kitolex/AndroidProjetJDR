@@ -3,10 +3,10 @@ package ca.uqac.projetjdr.jdr;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Attribut {
+public class Attribut<T> {
 
     public String nom;
-    public Valeur valeur;
+    public T valeur;
     public List<Attribut> listeSousAttributs;
 
     public Attribut(){
