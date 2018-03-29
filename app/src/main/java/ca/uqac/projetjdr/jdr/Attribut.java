@@ -5,13 +5,13 @@ import java.util.List;
 
 import ca.uqac.projetjdr.jdr.exception.ValeurImpossibleException;
 
-public class Attribut<T> {
+public class Attribut {
 
     private String nom;
-    private T valeur;
+    private String valeur;
     private List<Attribut> listeSousAttributs;
 
-    public Attribut(String nom, T valeur) throws ValeurImpossibleException {
+    public Attribut(String nom, String valeur) throws ValeurImpossibleException {
         this.setNom(nom);
         this.valeur = valeur;
         this.listeSousAttributs = new ArrayList<>();
@@ -28,11 +28,11 @@ public class Attribut<T> {
         this.nom = nom;
     }
 
-    public T getValeur() {
+    public String getValeur() {
         return valeur;
     }
 
-    public void setValeur(T valeur) {
+    public void setValeur(String valeur) {
         this.valeur = valeur;
     }
 
