@@ -64,12 +64,12 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        android:layout_height="100dp"/>
 
     <TextView
         android:id="@+id/resultatTextView"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="200dp"
         android:text="@string/selectionnez_un_de_a_lancer"
         android:textAlignment="center" />
 
