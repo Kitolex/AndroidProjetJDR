@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainVerticalLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".LancerDesActivity">
+
+
+    <LinearLayout
+        android:id="@+id/choixDesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/des4Button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@color/desClassique"
+            android:onClick="buttonDes4"
+            app:srcCompat="@mipmap/des4" />
+
+        <ImageButton
+            android:id="@+id/des6Button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@color/desClassique"
+            android:onClick="buttonDes6"
+            app:srcCompat="@mipmap/des6" />
+
+        <ImageButton
+            android:id="@+id/des8Button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@color/desClassique"
+            android:onClick="buttonDes8"
+            app:srcCompat="@mipmap/des8" />
+
+        <ImageButton
+            android:id="@+id/des12Button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@color/desClassique"
+            android:onClick="buttonDes12"
+            app:srcCompat="@mipmap/des12" />
+
+        <ImageButton
+            android:id="@+id/des20Button"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_weight="1"
+            android:background="@color/desClassique"
+            android:onClick="buttonDes20"
+            app:srcCompat="@mipmap/des20" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="100dp"/>
+
+    <TextView
+        android:id="@+id/resultatTextView"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="@string/selectionnez_un_de_a_lancer"
+        android:textAlignment="center" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp"/>
+
+    <Button
+        android:id="@+id/lancerDesButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:onClick="lancerDeSelectionne"
+        android:text="@string/lancer_le_de" />
+
+    <Button
+        android:id="@+id/retour"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/retour" />
+
+</LinearLayout>

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ProjetJDR</string>
+    <string name="lancer_le_de">Lancer le dé</string>
+    <string name="selectionnez_un_de_a_lancer">Sélectionnez un dé à lancer</string>
+    <string name="retour">Retour</string>
+    <string name="appuyer_ou_secouer">Appuyez sur LANCER LE DÉ ou secouer le téléphone !</string>
 </resources>
