@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ProjetJDR</string>
+
+    <string-array name="Choix_de_FichePerso">
+        <item>Fiche1</item>
+        <item>Fiche2 States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
 </resources>

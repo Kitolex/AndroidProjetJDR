@@ -8,33 +8,16 @@
     tools:context="ca.uqac.projetjdr.MainActivity">
 
     <LinearLayout
-        android:id="@+id/layout1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="50"
         android:orientation="vertical">
 
         <TextView
-            android:text="Choix du type de la fiche perso"
+            android:text="Bonjour nouvelle activitée pour modifier une fichier perso"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView"/>
-
-        <Spinner
-            android:id="@+id/spinner1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:entries="@array/Choix_de_FichePerso"
-            />
-
-
-            <LinearLayout
-                android:id="@+id/affichage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </LinearLayout>
-
 
     </LinearLayout>
 

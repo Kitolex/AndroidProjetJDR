@@ -33,20 +33,25 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Modifier une fiche perso"
-                android:id="@+id/Modifier"/>
+                android:id="@+id/Modifier"
+                android:onClick="BoutonModifier"/>
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Supprimer une fiche perso"
-                android:id="@+id/Supprimer"/>
+                android:id="@+id/Supprimer"
+                android:onClick="BoutonSupprimer"/>
 
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Importer une fiche perso type"
-                android:id="@+id/Importer"/>
+                android:id="@+id/Importer"
+                android:onClick="BoutonImporter"/>
+
+            BoutonImporter
 
         </LinearLayout>
 

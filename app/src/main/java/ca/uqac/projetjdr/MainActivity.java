@@ -17,4 +17,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, CreationActivite.class);
         startActivity(intent);
     }
+
+    public void BoutonModifier(View view) {
+        Intent intent = new Intent(MainActivity.this, ModifierActivite.class);
+        startActivity(intent);
+    }
+
+    public void BoutonSupprimer(View view) {
+        Intent intent = new Intent(MainActivity.this, SupprimerActivite.class);
+        startActivity(intent);
+    }
+
+    public void BoutonImporter(View view) {
+        Intent intent = new Intent(MainActivity.this, ImporterActivite.class);
+        startActivity(intent);
+    }
 }
