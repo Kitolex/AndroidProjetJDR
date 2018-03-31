@@ -20,6 +20,8 @@
         <activity android:name=".ModifierActivite"/>
         <activity android:name=".SupprimerActivite"/>
         <activity android:name=".ImporterActivite"/>
+
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
