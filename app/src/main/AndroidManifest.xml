@@ -17,6 +17,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".LancerDesActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CreationActivite"/>
+        <activity android:name=".ModifierActivite"/>
+        <activity android:name=".SupprimerActivite"/>
+        <activity android:name=".ImporterActivite"/>
+
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

@@ -4,4 +4,15 @@
     <string name="selectionnez_un_de_a_lancer">Sélectionnez un dé à lancer</string>
     <string name="retour">Retour</string>
     <string name="appuyer_ou_secouer">Appuyez sur LANCER LE DÉ ou secouer le téléphone !</string>
+
+    <string-array name="Choix_de_FichePerso">
+        <item>Fiche1</item>
+        <item>Fiche2 States</item>
+        <item>Indonesia</item>
+        <item>France</item>
+        <item>Italy</item>
+        <item>Singapore</item>
+        <item>New Zealand</item>
+        <item>India</item>
+    </string-array>
 </resources>
