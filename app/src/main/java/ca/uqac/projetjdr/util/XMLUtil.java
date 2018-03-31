@@ -116,7 +116,7 @@ public class XMLUtil {
         final DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(is);
         Element racine = document.getDocumentElement();
-        res =getElement(racine);
+        res = getElement(racine);
 
         return res;
     }

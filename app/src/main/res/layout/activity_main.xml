@@ -32,7 +32,7 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Modifier une fiche perso"
+                android:text="Fiche Perso"
                 android:id="@+id/Modifier"
                 android:onClick="BoutonModifier"/>
 
@@ -51,17 +51,7 @@
                 android:id="@+id/Importer"
                 android:onClick="BoutonImporter"/>
 
-            BoutonImporter
-
         </LinearLayout>
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="readXML"
-        android:text="Button"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="231dp" />
 
 </android.support.constraint.ConstraintLayout>

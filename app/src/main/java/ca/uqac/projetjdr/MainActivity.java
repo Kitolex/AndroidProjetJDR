@@ -13,6 +13,7 @@ import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import ca.uqac.projetjdr.util.NoeudXML;
 import ca.uqac.projetjdr.util.XMLUtil;
 
 
@@ -50,7 +51,8 @@ public class MainActivity extends AppCompatActivity {
     public void readXML(View v){
         try {
             XMLUtil xml = new XMLUtil((getAssets().open("Test.xml")));
-            System.out.println(xml.lireXML().toString());
+            NoeudXML res = xml.lireXML();
+            System.out.println(res.toString());
         } catch (IOException e) {
             e.printStackTrace();
         } catch (SAXException e) {
@@ -59,6 +61,36 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
+      /*  public void readXML(View v){
+        try {
+            XMLUtil xml = new XMLUtil((getAssets().open("Test.xml")));
+            NoeudXML res = xml.lireXML();
+            System.out.println(res.getNom());
+            if(res.haveSousElement()){
+                ArrayList<NoeudXML> temp = res.getListNoeud();
+                for (NoeudXML test: temp) {
+                    System.out.println(test.getNom());
+                    if(res.haveSousElement()){
+                        ArrayList<NoeudXML> temp2 = test.getListNoeud();
+                        for (NoeudXML test2: temp2) {
+                            System.out.println(test2.getNom());
+                        }
+                    }
+                }
+
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        }
+    }
+*/
 
 
 
