@@ -1,5 +1,6 @@
 package ca.uqac.projetjdr;
 
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -63,6 +64,8 @@ public class LancerDesActivity extends AppCompatActivity implements SensorEventL
     private Button buttonNbDesUp;
     private Button buttonAjoutFixeDown;
     private Button buttonAjoutFixeUp;
+
+    private String historiqueString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -190,6 +193,14 @@ public class LancerDesActivity extends AppCompatActivity implements SensorEventL
             resultatTextView.setText(resultatDeString);
             sommeTextView.setText(somme);
 
+            String nouveauLancer = resultatDeString;
+            if(!somme.equals("")){
+                nouveauLancer += " (" + somme + ")";
+            }
+            nouveauLancer += "\n" + makeTextNbDesTextView() + makeTextAjoutFixeTextView() + "\n\n";
+
+            historiqueString = nouveauLancer + historiqueString;
+
             updateSizeUp();
         }
     }
@@ -313,14 +324,31 @@ public class LancerDesActivity extends AppCompatActivity implements SensorEventL
     }
 
     private void updateNbDesTextView(){
-        nbDesTextView.setText(Integer.toString(nbDesALancer) + "D" + Integer.toString(valeurDesSelectionne));
+        nbDesTextView.setText(makeTextNbDesTextView());
     }
 
     private void updateAjoutFixeTextView(){
+        ajoutFixeTextView.setText(makeTextAjoutFixeTextView());
+    }
+
+    private String makeTextNbDesTextView(){
+        return Integer.toString(nbDesALancer) + "D" + Integer.toString(valeurDesSelectionne);
+    }
+
+    private String makeTextAjoutFixeTextView(){
         if(ajoutFixeAuResultat < 0){
-            ajoutFixeTextView.setText(Integer.toString(ajoutFixeAuResultat));
+            return Integer.toString(ajoutFixeAuResultat);
         } else {
-            ajoutFixeTextView.setText("+" + Integer.toString(ajoutFixeAuResultat));
+            return "+" + Integer.toString(ajoutFixeAuResultat);
         }
+    }
+
+    public void historique(View view) {
+
+        Intent i = new Intent(this, HistoriqueDesActivity.class);
+
+        i.putExtra("historique", historiqueString);
+
+        startActivity(i);
     }
 }

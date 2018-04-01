@@ -117,10 +117,10 @@
         android:text="@string/retour" />
 
     <Button
-        android:id="@+id/lancerDes_hiorique"
+        android:id="@+id/lancerDes_historique"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="retour"
+        android:onClick="historique"
         android:text="@string/historique" />
 
     <LinearLayout
