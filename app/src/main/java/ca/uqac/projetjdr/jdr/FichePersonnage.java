@@ -7,12 +7,21 @@ import ca.uqac.projetjdr.jdr.exception.ValeurImpossibleException;
 
 public class FichePersonnage {
 
+    private int id;
     private String nomPersonnage;
     private List<Attribut> listeAttributs;
 
     public FichePersonnage(String nomPersonnage) throws ValeurImpossibleException {
         this.setNomPersonnage(nomPersonnage);
         this.listeAttributs = new ArrayList<>();
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getNomPersonnage() {

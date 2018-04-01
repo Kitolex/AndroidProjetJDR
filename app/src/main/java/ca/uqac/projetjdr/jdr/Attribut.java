@@ -7,6 +7,7 @@ import ca.uqac.projetjdr.jdr.exception.ValeurImpossibleException;
 
 public class Attribut {
 
+    private int id;
     private String nom;
     private String valeur;
     private List<Attribut> listeSousAttributs;
@@ -15,6 +16,14 @@ public class Attribut {
         this.setNom(nom);
         this.valeur = valeur;
         this.listeSousAttributs = new ArrayList<>();
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return this.id;
     }
 
     public String getNom() {
