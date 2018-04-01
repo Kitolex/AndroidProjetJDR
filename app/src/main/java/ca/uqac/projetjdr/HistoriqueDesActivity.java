@@ -1,6 +1,7 @@
 package ca.uqac.projetjdr;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,8 @@ public class HistoriqueDesActivity extends AppCompatActivity {
 
         historiqueTextView = (TextView)findViewById(R.id.historiqueDes_historiqueTextView);
         historiqueTextView.setText(intent.getStringExtra("historique"));
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     public void retour(View view) {

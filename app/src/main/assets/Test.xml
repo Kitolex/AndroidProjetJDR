@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fichePersoType>
+  <Attributs>
+	<Physique valeur="1">
+		<Force valeur="1"/>
+		<Dexterite valeur="1"/>
+		<Vigueur valeur="1"/>
+	</Physique>
+	 <Mental valeur="1">
+	  <Perception valeur="1"/>
+	  <Intelligence valeur="1"/>
+	  <Astuce valeur="1"/>
+  	</Mental>
+  </Attributs>
+  
+</fichePersoType>
