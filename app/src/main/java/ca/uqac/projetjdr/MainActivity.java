@@ -48,6 +48,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void BoutonLancerDes(View view) {
+        Intent intent = new Intent(MainActivity.this, LancerDesActivity.class);
+        startActivity(intent);
+    }
+
     public void readXML(View v){
         try {
             XMLUtil xml = new XMLUtil((getAssets().open("Test.xml")));
