@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainVerticalLayout"
+    android:id="@+id/lancerDes_mainVerticalLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -10,75 +10,99 @@
 
 
     <LinearLayout
-        android:id="@+id/choixDesLayout"
+        android:id="@+id/lancerDes_choixDesLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
 
         <ImageButton
-            android:id="@+id/des4Button"
+            android:id="@+id/lancerDes_des4Button"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/desClassique"
             android:onClick="buttonDes4"
             app:srcCompat="@mipmap/des4" />
 
         <ImageButton
-            android:id="@+id/des6Button"
+            android:id="@+id/lancerDes_des6Button"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/desClassique"
             android:onClick="buttonDes6"
             app:srcCompat="@mipmap/des6" />
 
         <ImageButton
-            android:id="@+id/des8Button"
+            android:id="@+id/lancerDes_des8Button"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/desClassique"
             android:onClick="buttonDes8"
             app:srcCompat="@mipmap/des8" />
 
         <ImageButton
-            android:id="@+id/des12Button"
+            android:id="@+id/lancerDes_des10Button"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/desClassique"
+            android:onClick="buttonDes10"
+            app:srcCompat="@mipmap/des10" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lancerDes_choixDesLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/lancerDes_des12Button"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/desClassique"
             android:onClick="buttonDes12"
             app:srcCompat="@mipmap/des12" />
 
         <ImageButton
-            android:id="@+id/des20Button"
+            android:id="@+id/lancerDes_des20Button"
             android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/desClassique"
             android:onClick="buttonDes20"
             app:srcCompat="@mipmap/des20" />
+
+        <ImageButton
+            android:id="@+id/lancerDes_des100Button"
+            android:layout_width="75dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/desClassique"
+            android:onClick="buttonDes100"
+            app:srcCompat="@mipmap/des100" />
+
     </LinearLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="100dp"/>
-
     <TextView
-        android:id="@+id/resultatTextView"
+        android:id="@+id/lancerDes_resultatTextView"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="130dp"
         android:text="@string/selectionnez_un_de_a_lancer"
         android:textAlignment="center" />
 
-    <View
+    <TextView
+        android:id="@+id/lancerDes_sommeTextView"
         android:layout_width="match_parent"
-        android:layout_height="20dp"/>
+        android:layout_height="50dp"
+        android:textAlignment="center" />
 
     <Button
-        android:id="@+id/lancerDesButton"
+        android:id="@+id/lancerDes_lancerDesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:enabled="false"
@@ -86,9 +110,71 @@
         android:text="@string/lancer_le_de" />
 
     <Button
-        android:id="@+id/retour"
+        android:id="@+id/lancerDes_retour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="retour"
         android:text="@string/retour" />
+
+    <Button
+        android:id="@+id/lancerDes_historique"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="historique"
+        android:text="@string/historique" />
+
+    <LinearLayout
+        android:id="@+id/lancerDes_optionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/lancerDes_nbDesDown"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="nbDesMoins1"
+            android:text="@string/moins1" />
+
+        <TextView
+            android:id="@+id/lancerDes_nbDesTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/lancerDes_nbDesUp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="nbDesPlus1"
+            android:text="@string/plus1" />
+
+        <Button
+            android:id="@+id/lancerDes_ajoutFixeDown"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="ajoutFixeMoins1"
+            android:text="@string/moins1" />
+
+        <TextView
+            android:id="@+id/lancerDes_ajoutFixeTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.5"
+            android:textAlignment="center"/>
+
+        <Button
+            android:id="@+id/lancerDes_ajoutFixeUp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:onClick="ajoutFixePlus1"
+            android:text="@string/plus1" />
+
+    </LinearLayout>
 
 </LinearLayout>

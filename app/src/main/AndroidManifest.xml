@@ -16,7 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LancerDesActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name=".CreationActivite"/>
+        <activity android:name=".ModifierActivite"/>
+        <activity android:name=".SupprimerActivite"/>
+        <activity android:name=".LancerDesActivity" android:screenOrientation="portrait" />
+        <activity android:name=".HistoriqueDesActivity" android:screenOrientation="portrait" />
+        <activity android:name=".ImporterActivite"/>
+
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>
