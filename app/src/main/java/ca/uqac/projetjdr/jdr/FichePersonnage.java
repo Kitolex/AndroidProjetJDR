@@ -9,7 +9,7 @@ public class FichePersonnage {
 
     private int id;
     private String nomPersonnage;
-    private List<Attribut> listeAttributs;
+    public List<Attribut> listeAttributs;
 
     public FichePersonnage(String nomPersonnage) throws ValeurImpossibleException {
         this.setNomPersonnage(nomPersonnage);

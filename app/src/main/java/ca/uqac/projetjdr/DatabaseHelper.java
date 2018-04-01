@@ -24,11 +24,11 @@ import ca.uqac.projetjdr.jdr.exception.ValeurImpossibleException;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String LOG = "DIM";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME = "JDR";
 
-    private static final String TABLE_FICHE = "todos";
-    private static final String TABLE_ATTRIBUT = "tags";
+    private static final String TABLE_FICHE = "fiches";
+    private static final String TABLE_ATTRIBUT = "attributs";
 
     // Common column names
     private static final String KEY_ID = "id";
@@ -111,14 +111,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (c != null)
             c.moveToFirst();
 
-
         try {
+            List<Attribut> attrs = null;
             f = new FichePersonnage(c.getString(c.getColumnIndex(KEY_FICHE_NAME)));
             f.setId(c.getInt(c.getColumnIndex(KEY_ID)));
-
+            f.listeAttributs = getAllAttributsFromFiche(f);
 
         }catch(ValeurImpossibleException e){
-
+            e.printStackTrace();
         }
         c.close();
 
@@ -143,10 +143,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 try {
                     FichePersonnage f = new FichePersonnage(c.getString(c.getColumnIndex(KEY_FICHE_NAME)));
                     f.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                    f.listeAttributs = getAllAttributsFromFiche(f);
 
                     fiches.add(f);
                 }catch(ValeurImpossibleException e){
-
+                    e.printStackTrace();
                 }
             } while (c.moveToNext());
         }
@@ -215,7 +216,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             a = new Attribut(c.getString(c.getColumnIndex(KEY_ATTR_NAME)), c.getString(c.getColumnIndex(KEY_VALUE)));
             a.setId(c.getInt(c.getColumnIndex(KEY_ID)));
         }catch (ValeurImpossibleException e){
-
+            e.printStackTrace();
         }
         c.close();
         return a;
@@ -223,7 +224,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     /*
-   * getting all attributs form a fiche
+   * getting all attributs from a fiche
    * */
     public List<Attribut> getAllAttributsFromFiche(FichePersonnage fiche) {
 
@@ -244,7 +245,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
                         attrs.add(a);
                     }catch(ValeurImpossibleException e){
-
+                        e.printStackTrace();
                     }
                 }
             } while (c.moveToNext());
