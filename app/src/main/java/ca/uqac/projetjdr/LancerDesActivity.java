@@ -65,7 +65,7 @@ public class LancerDesActivity extends AppCompatActivity implements SensorEventL
     private Button buttonAjoutFixeDown;
     private Button buttonAjoutFixeUp;
 
-    private String historiqueString = "";
+    private static String historiqueString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
