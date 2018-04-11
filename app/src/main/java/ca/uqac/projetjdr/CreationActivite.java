@@ -45,7 +45,7 @@ public class CreationActivite extends Activity {
                         NoeudXML res = xml.lireXML();
                         LinearLayout mylayout = findViewById(R.id.affichage);
                         mylayout.removeAllViews();
-                        CreerAffichage(res, mylayout);
+                        CreerAffichage(res, mylayout, 1);
                     } catch (IOException e) {
                         e.printStackTrace();
                     } catch (SAXException e) {
@@ -78,7 +78,7 @@ public class CreationActivite extends Activity {
     }
 
 
-    public void CreerAffichage(NoeudXML res, LinearLayout l) {
+    public void CreerAffichage(NoeudXML res, LinearLayout l, int number) {
         System.out.println(res.getNom());
         if (res.haveSousElement()) {
             LinearLayout layout = new LinearLayout(getApplicationContext());
@@ -86,16 +86,22 @@ public class CreationActivite extends Activity {
             layout.setOrientation(LinearLayout.VERTICAL);
             TextView textview = new TextView(getApplicationContext());
             textview.setText(res.getNom());
+            textview.setTag(res.getNom()+"_"+number);
+            //textview.setTag(number, res.getNom());
             layout.addView(textview);
             l.addView(layout);
             ArrayList<NoeudXML> temp = res.getListNoeud();
             for (NoeudXML test : temp) {
-                CreerAffichage(test, layout);
+                CreerAffichage(test, layout, number+1);
             }
         }else{
             TextView textview = new TextView(getApplicationContext());
             textview.setText(res.getNom());
+            //textview.setTag(number, res.getNom());
+            textview.setTag(res.getNom()+"_"+number);
             EditText edittext = new EditText(getApplicationContext());
+            //edittext.setTag(number, res.getNom());
+            edittext.setTag(res.getNom()+"_"+number);
             l.addView(textview);
             l.addView(edittext);
         }
