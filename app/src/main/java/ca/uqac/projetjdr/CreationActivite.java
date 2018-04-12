@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -35,37 +37,43 @@ public class CreationActivite extends Activity {
 
 
         Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+
+        ArrayList<String> listeFichier = new ArrayList<>();
+
+        try {
+            String[] ss = getAssets().list("");
+
+            for(String s : ss){
+                if(s.matches(".+[.]xml$")){
+                    listeFichier.add(s.substring(0, s.length() - 4));
+                }
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        ArrayAdapter dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listeFichier);
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(dataAdapter);
+
         spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 String selectedItem = parentView.getItemAtPosition(position).toString();
-                if (selectedItem.equals("Fiche1")) {
-                    try {
-                        XMLUtil xml = new XMLUtil((getAssets().open("Test.xml")));
-                        NoeudXML res = xml.lireXML();
-                        LinearLayout mylayout = findViewById(R.id.affichage);
-                        mylayout.removeAllViews();
-                        CreerAffichage(res, mylayout, 1);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (SAXException e) {
-                        e.printStackTrace();
-                    } catch (ParserConfigurationException e) {
-                        e.printStackTrace();
-                    }
 
-
-                }
-
-                if (selectedItem.equals("Fiche2 States")) {
+                try {
+                    XMLUtil xml = new XMLUtil((getAssets().open(selectedItem + ".xml")));
+                    NoeudXML res = xml.lireXML();
                     LinearLayout mylayout = findViewById(R.id.affichage);
                     mylayout.removeAllViews();
-                    TextView test = new TextView(getApplicationContext());
-                    test.setText("ceci est la fiche numéro 2");
-                    mylayout.addView(test);
-                    Button button = new Button(getApplicationContext());
-                    button.setText("J ai réussi a faire le truc que je voulais");
-                    mylayout.addView(button);
+                    CreerAffichage(res, mylayout, 1);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
                 }
             }
 
