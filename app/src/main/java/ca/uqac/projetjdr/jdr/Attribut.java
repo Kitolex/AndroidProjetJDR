@@ -1,4 +1,4 @@
-﻿package ca.uqac.projetjdr.jdr;
+package ca.uqac.projetjdr.jdr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +49,9 @@ public class Attribut {
         return listeSousAttributs;
     }
 
-    public void setListeSousAttributs(List<Attribut> l){ this.listeSousAttributs = l; }
+    public void setListeSousAttributs(List<Attribut> l){
+		this.listeSousAttributs = l;
+	}
 
     @Override
     public String toString(){
