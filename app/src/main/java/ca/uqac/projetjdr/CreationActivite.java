@@ -130,10 +130,10 @@ public class CreationActivite extends Activity {
                 }
             } else {
                 ArrayList<NoeudXML> temp = res.getListNoeud();
-				compteur = 1; 
+				compteur = 1;
                 for (NoeudXML test : temp) {
-                     CreerAffichage(test, l, baseTag + "attribName_"+number, compteur);
-					compteur++; 
+                     CreerAffichage(test, l, "", compteur);
+					compteur++;
                 }
             }
 
