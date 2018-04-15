@@ -15,11 +15,13 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import org.w3c.dom.Attr;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -35,14 +37,10 @@ import ca.uqac.projetjdr.util.XMLUtil;
 
 public class CreationActivite extends Activity {
 
-    public int number;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.creation_activity);
-
-        number = 1;
 
         Button button = (Button)findViewById(R.id.Creer);
 
@@ -84,7 +82,7 @@ public class CreationActivite extends Activity {
                     NoeudXML res = xml.lireXML();
                     LinearLayout mylayout = findViewById(R.id.affichage);
                     mylayout.removeAllViews();
-                    CreerAffichage(res, mylayout);
+                    CreerAffichage(res, mylayout, "", 1);
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (SAXException e) {
@@ -103,31 +101,33 @@ public class CreationActivite extends Activity {
     }
 
 
-    public void CreerAffichage(NoeudXML res, LinearLayout l) {
+    public void CreerAffichage(NoeudXML res, LinearLayout l, String baseTag, int number) {
         System.out.println(res.getNom());
+        int compteur;
         if (res.haveSousElement()) {
             LinearLayout layout = new LinearLayout(getApplicationContext());
             layout.setId(15+1);
             layout.setOrientation(LinearLayout.VERTICAL);
             TextView textview = new TextView(getApplicationContext());
             textview.setText(res.getNom());
-            textview.setTag("attribName_"+number);
+            textview.setTag(baseTag + "attribName_"+number);
             //textview.setTag(number, res.getNom());
             layout.addView(textview);
             l.addView(layout);
             ArrayList<NoeudXML> temp = res.getListNoeud();
-            number++;
+            compteur = 1;
             for (NoeudXML test : temp) {
-                CreerAffichage(test, layout);
+                CreerAffichage(test, layout, baseTag + "attribName_"+number, compteur);
+                compteur++;
             }
         }else{
             TextView textview = new TextView(getApplicationContext());
             textview.setText(res.getNom());
             //textview.setTag(number, res.getNom());
-            textview.setTag("attribName_"+number);
+            textview.setTag(baseTag + "attribName_"+number);
             EditText edittext = new EditText(getApplicationContext());
             //edittext.setTag(number, res.getNom());
-            edittext.setTag("attribValue_"+number);
+            edittext.setTag(baseTag + "attribValue_"+number);
             l.addView(textview);
             l.addView(edittext);
             number++;
@@ -143,29 +143,10 @@ public class CreationActivite extends Activity {
         FichePersonnage fiche;
         EditText test;
 
-
-
         try{
             fiche = new FichePersonnage("Dummy");
 
-            listName = getViewsByTag(mylayout, "attribName_" + count);
-            listAttribut = getViewsByTag(mylayout, "attribValue_" + count);
-
-            while(listName.size() != 0  ){
-                EditText edit = null;
-                TextView text = (TextView) listName.get(0);
-
-                if( listAttribut.size() != 0)
-                    edit = (EditText) listAttribut.get(0);
-                if(listAttribut.size() != 0) {
-                    fiche.listeAttributs.add(new Attribut(text.getText().toString(), edit.getText().toString()));
-                }else{
-                    fiche.listeAttributs.add(new Attribut(text.getText().toString(), "none"));
-                }
-                count ++;
-                listName = getViewsByTag(mylayout, "attribName_" + count);
-                listAttribut = getViewsByTag(mylayout, "attribValue_" + count);
-            }
+            fiche.listeAttributs = getAttribs("");
 
             db.createFiche(fiche);
         } catch(ValeurImpossibleException e) {
@@ -173,6 +154,43 @@ public class CreationActivite extends Activity {
         }
 
         db.close();
+    }
+
+    public List<Attribut> getAttribs(String baseTag){
+        ArrayList<View> listName, listAttribut;
+        List<Attribut> retour = new ArrayList<Attribut>();
+        LinearLayout mylayout = findViewById(R.id.affichage);
+
+        int count = 1;
+
+        listName = getViewsByTag(mylayout, baseTag + "attribName_" + count);
+        listAttribut = getViewsByTag(mylayout, baseTag + "attribValue_" + count);
+
+        try{
+            while(listName.size() != 0  ){
+                Attribut attr;
+                EditText edit = null;
+                TextView text = (TextView) listName.get(0);
+
+                if( listAttribut.size() != 0)
+                    edit = (EditText) listAttribut.get(0);
+                if(listAttribut.size() != 0) {
+                    attr = new Attribut(text.getText().toString(), edit.getText().toString());
+                }else{
+                    attr =new Attribut(text.getText().toString(), "none");
+                }
+                attr.setListeSousAttributs(getAttribs(baseTag + "attribName_" + count));
+                retour.add(attr);
+
+                count ++;
+                listName = getViewsByTag(mylayout, baseTag + "attribName_" + count);
+                listAttribut = getViewsByTag(mylayout, baseTag + "attribValue_" + count);
+            }
+        } catch(ValeurImpossibleException e) {
+            e.printStackTrace();
+        }
+
+        return retour;
     }
 
     public ArrayList<View> getViewsByTag(ViewGroup root, String tag){

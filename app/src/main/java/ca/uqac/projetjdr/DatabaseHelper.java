@@ -24,7 +24,7 @@ import ca.uqac.projetjdr.jdr.exception.ValeurImpossibleException;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String LOG = "DIM";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
     private static final String DATABASE_NAME = "JDR";
 
     private static final String TABLE_FICHE = "fiches";
@@ -47,7 +47,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     // Attribut table create statement
     private static final String CREATE_TABLE_ATTRIBUT = "CREATE TABLE "
             + TABLE_ATTRIBUT + "(" + KEY_ID + " INTEGER PRIMARY KEY," + KEY_ATTR_NAME
-            + " TEXT," + KEY_VALUE + " TEXT," + KEY_ID_FICHE + " INTEGER," + KEY_CREATED_AT
+            + " TEXT," + KEY_VALUE + " TEXT," + KEY_ID_FICHE + " INTEGER,"  + KEY_ID_PARENT + " INTEGER,"+ KEY_CREATED_AT
             + " DATETIME" + ")";
 
     // Fiche table create statement
