@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ca.uqac.projetjdr">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +11,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CreationActivite"/>
-        <activity android:name=".ModifierActivite"/>
-        <activity android:name=".SupprimerActivite"/>
-        <activity android:name=".LancerDesActivity" android:screenOrientation="portrait" />
-        <activity android:name=".HistoriqueDesActivity" android:screenOrientation="portrait" />
-        <activity android:name=".ImporterActivite"/>
-
+        <activity
+            android:name=".CreationActivite"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ModifierActivite"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SupprimerActivite"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".LancerDesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".HistoriqueDesActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ImporterActivite"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ListeFichesActivity"
+            android:screenOrientation="portrait" />
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
 </manifest>

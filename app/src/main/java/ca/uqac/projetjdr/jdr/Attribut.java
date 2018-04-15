@@ -1,4 +1,4 @@
-package ca.uqac.projetjdr.jdr;
+﻿package ca.uqac.projetjdr.jdr;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,4 +50,17 @@ public class Attribut {
     }
 
     public void setListeSousAttributs(List<Attribut> l){ this.listeSousAttributs = l; }
+
+    @Override
+    public String toString(){
+
+        String result = nom + " : " + valeur + "\n";
+
+        for(Attribut a : listeSousAttributs){
+            result += a.toString();
+        }
+
+        return result;
+    }
+
 }

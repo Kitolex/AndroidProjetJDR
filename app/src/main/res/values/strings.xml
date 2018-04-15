@@ -7,4 +7,8 @@
     <string name="plus1">+1</string>
     <string name="moins1">-1</string>
     <string name="historique">Historique</string>
+    <string name="choix_du_type_de_la_fiche_perso">Choix du type de la fiche perso</string>
+    <string name="creer_une_fiche_perso">Créer une fiche perso</string>
+    <string name="vous_n_avez_cree_aucune_fiche">Vous n\'avez créé aucune fiche !</string>
+    <string name="nom">Nom</string>
 </resources>

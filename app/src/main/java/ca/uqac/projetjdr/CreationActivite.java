@@ -2,9 +2,12 @@ package ca.uqac.projetjdr;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +17,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.xml.sax.SAXException;
 
@@ -100,33 +104,42 @@ public class CreationActivite extends Activity {
             }
 
         });
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
 
     public void CreerAffichage(NoeudXML res, LinearLayout l) {
         System.out.println(res.getNom());
         if (res.haveSousElement()) {
-            LinearLayout layout = new LinearLayout(getApplicationContext());
-            layout.setId(15+1);
-            layout.setOrientation(LinearLayout.VERTICAL);
-            TextView textview = new TextView(getApplicationContext());
-            textview.setText(res.getNom());
-            textview.setTag("attribName_"+number);
-            //textview.setTag(number, res.getNom());
-            layout.addView(textview);
-            l.addView(layout);
-            ArrayList<NoeudXML> temp = res.getListNoeud();
-            number++;
-            for (NoeudXML test : temp) {
-                CreerAffichage(test, layout);
+            if(!res.getNom().equals("fichePersoType") && !res.getNom().equals("Attributs")){
+                LinearLayout layout = new LinearLayout(getApplicationContext());
+                layout.setId(15+1);
+                layout.setOrientation(LinearLayout.VERTICAL);
+                TextView textview = new TextView(getApplicationContext());
+                textview.setText(res.getNom());
+                textview.setTag("attribName_"+number);
+                textview.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
+                textview.setTypeface(null, Typeface.BOLD);
+                layout.addView(textview);
+                l.addView(layout);
+                ArrayList<NoeudXML> temp = res.getListNoeud();
+                number++;
+                for (NoeudXML test : temp) {
+                    CreerAffichage(test, layout);
+                }
+            } else {
+                ArrayList<NoeudXML> temp = res.getListNoeud();
+                for (NoeudXML test : temp) {
+                    CreerAffichage(test, l);
+                }
             }
+
         }else{
             TextView textview = new TextView(getApplicationContext());
             textview.setText(res.getNom());
-            //textview.setTag(number, res.getNom());
             textview.setTag("attribName_"+number);
             EditText edittext = new EditText(getApplicationContext());
-            //edittext.setTag(number, res.getNom());
             edittext.setTag("attribValue_"+number);
             l.addView(textview);
             l.addView(edittext);
@@ -141,12 +154,11 @@ public class CreationActivite extends Activity {
         ArrayList<View> listName, listAttribut;
         int count = 1;
         FichePersonnage fiche;
-        EditText test;
 
-
+        EditText editNomFichePerso = (EditText)findViewById(R.id.editNomFichePerso);
 
         try{
-            fiche = new FichePersonnage("Dummy");
+            fiche = new FichePersonnage(editNomFichePerso.getText().toString());
 
             listName = getViewsByTag(mylayout, "attribName_" + count);
             listAttribut = getViewsByTag(mylayout, "attribValue_" + count);
@@ -167,12 +179,18 @@ public class CreationActivite extends Activity {
                 listAttribut = getViewsByTag(mylayout, "attribValue_" + count);
             }
 
+            Log.i("JDR_LOG", fiche.toStringDetails());
+
             db.createFiche(fiche);
+
+            Toast.makeText(getApplicationContext(), "fiche " + fiche.getNomPersonnage() + " créée", Toast.LENGTH_SHORT).show();
         } catch(ValeurImpossibleException e) {
             e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Echec lors de la création de la fiche", Toast.LENGTH_SHORT).show();
         }
 
         db.close();
+        this.finish();
     }
 
     public ArrayList<View> getViewsByTag(ViewGroup root, String tag){
