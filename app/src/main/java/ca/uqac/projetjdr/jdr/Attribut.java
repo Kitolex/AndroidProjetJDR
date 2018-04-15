@@ -48,4 +48,6 @@ public class Attribut {
     public List<Attribut> getListeSousAttributs() {
         return listeSousAttributs;
     }
+
+    public void setListeSousAttributs(List<Attribut> l){ this.listeSousAttributs = l; }
 }

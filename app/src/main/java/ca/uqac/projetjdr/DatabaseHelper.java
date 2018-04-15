@@ -92,7 +92,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         long fiche_id = db.insert(TABLE_FICHE, null, values);
 
         for (Attribut attr: fiche.getListeAttributs() ) {
-            createAttribut(attr, fiche_id);
+            createAttribut(attr, ""+fiche_id, "");
         }
         return fiche_id;
     }
@@ -184,16 +184,23 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
      * Creating an attribut
      */
-    public long createAttribut(Attribut attribut, long ficheId) {
+    public long createAttribut(Attribut attribut, String ficheId, String idParent) {
         SQLiteDatabase db = getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(KEY_ATTR_NAME, attribut.getNom());
         values.put(KEY_VALUE, attribut.getValeur());
         values.put(KEY_CREATED_AT, getDateTime());
-        values.put(KEY_ID_FICHE, ficheId);
+        if(!ficheId.equals(""))
+            values.put(KEY_ID_FICHE, ficheId);
+        if(!idParent.equals(""))
+            values.put(KEY_ID_PARENT, idParent);
 
         long attribut_id = db.insert(TABLE_ATTRIBUT, null, values);
+
+        for (Attribut a: attribut.getListeSousAttributs()  ) {
+            createAttribut(a, "", ""+attribut_id);
+        }
 
         return attribut_id;
     }
@@ -215,6 +222,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try {
             a = new Attribut(c.getString(c.getColumnIndex(KEY_ATTR_NAME)), c.getString(c.getColumnIndex(KEY_VALUE)));
             a.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+            a.setListeSousAttributs(getAllSousAttribut(a));
         }catch (ValeurImpossibleException e){
             e.printStackTrace();
         }
@@ -242,6 +250,39 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     try {
                         Attribut a = new Attribut(c.getString(c.getColumnIndex(KEY_ATTR_NAME)), c.getString(c.getColumnIndex(KEY_VALUE)));
                         a.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                        a.setListeSousAttributs(getAllSousAttribut(a));
+
+                        attrs.add(a);
+                    }catch(ValeurImpossibleException e){
+                        e.printStackTrace();
+                    }
+                }
+            } while (c.moveToNext());
+        }
+
+        c.close();
+        return attrs;
+    }
+
+    /*
+    * Get all attribut which have the parameter as a parent
+     */
+    public List<Attribut> getAllSousAttribut(Attribut attr){
+        List<Attribut> attrs = new ArrayList<Attribut>();
+        String selectQuery = "SELECT  * FROM " + TABLE_ATTRIBUT;
+
+        Log.e(LOG, selectQuery);
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c.moveToFirst()) {
+            do {
+                if(c.getInt(c.getColumnIndex(KEY_ID_PARENT)) == attr.getId()){
+                    try {
+                        Attribut a = new Attribut(c.getString(c.getColumnIndex(KEY_ATTR_NAME)), c.getString(c.getColumnIndex(KEY_VALUE)));
+                        a.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                        a.setListeSousAttributs(getAllSousAttribut(a));
 
                         attrs.add(a);
                     }catch(ValeurImpossibleException e){
@@ -275,6 +316,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void deleteAttribut(long attr_id) {
 
         SQLiteDatabase db = this.getWritableDatabase();
+
+        Attribut attr = getAttribut(attr_id);
+
+        for (Attribut a:  attr.getListeSousAttributs()) {
+            deleteAttribut(a.getId());
+        }
+
         db.delete(TABLE_ATTRIBUT, KEY_ID + " = ?",
                 new String[] { String.valueOf(attr_id) });
     }
