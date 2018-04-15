@@ -48,4 +48,16 @@ public class Attribut {
     public List<Attribut> getListeSousAttributs() {
         return listeSousAttributs;
     }
+
+    @Override
+    public String toString(){
+
+        String result = nom + " : " + valeur + "\n";
+
+        for(Attribut a : listeSousAttributs){
+            result += a.toString();
+        }
+
+        return result;
+    }
 }

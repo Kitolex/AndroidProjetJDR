@@ -24,7 +24,7 @@ import ca.uqac.projetjdr.jdr.exception.ValeurImpossibleException;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String LOG = "DIM";
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 5;
     private static final String DATABASE_NAME = "JDR";
 
     private static final String TABLE_FICHE = "fiches";
