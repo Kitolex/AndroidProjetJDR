@@ -11,4 +11,5 @@
     <string name="creer_une_fiche_perso">Créer une fiche perso</string>
     <string name="vous_n_avez_cree_aucune_fiche">Vous n\'avez créé aucune fiche !</string>
     <string name="nom">Nom</string>
+    <string name="lancer_des_des">Lancer des dés</string>
 </resources>

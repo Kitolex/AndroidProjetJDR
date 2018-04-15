@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -86,5 +87,10 @@ public class ModifierActivite extends AppCompatActivity {
             number++;
         }
 
+    }
+
+    public void BoutonLancerDes(View view) {
+        Intent intent = new Intent(ModifierActivite.this, LancerDesActivity.class);
+        startActivity(intent);
     }
 }
