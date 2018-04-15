@@ -80,6 +80,7 @@ public class ModifierActivite extends AppCompatActivity {
             textview.setTag("attribName_"+number);
             EditText edittext = new EditText(getApplicationContext());
             edittext.setTag("attribValue_"+number);
+            edittext.setText(attribut.getValeur());
             l.addView(textview);
             l.addView(edittext);
             number++;
