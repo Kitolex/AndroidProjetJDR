@@ -25,14 +25,21 @@
             android:layout_height="wrap_content"
             />
 
+        <LinearLayout
+            android:id="@+id/affichage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
-                android:id="@+id/affichage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
 
-            </LinearLayout>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Créer une fiche perso"
+            android:id="@+id/Creer" />
 
 
     </LinearLayout>
