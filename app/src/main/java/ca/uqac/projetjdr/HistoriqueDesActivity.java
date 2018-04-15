@@ -19,7 +19,7 @@ public class HistoriqueDesActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         historiqueTextView = (TextView)findViewById(R.id.historiqueDes_historiqueTextView);
-        historiqueTextView.setText(intent.getStringExtra("historique"));
+        historiqueTextView.setText(intent.getStringExtra(LancerDesActivity.EXTRA_HISTORIQUE));
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }

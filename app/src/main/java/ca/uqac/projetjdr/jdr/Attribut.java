@@ -49,5 +49,20 @@ public class Attribut {
         return listeSousAttributs;
     }
 
-    public void setListeSousAttributs(List<Attribut> l){ this.listeSousAttributs = l; }
+    public void setListeSousAttributs(List<Attribut> l){
+		this.listeSousAttributs = l;
+	}
+
+    @Override
+    public String toString(){
+
+        String result = nom + " : " + valeur + "\n";
+
+        for(Attribut a : listeSousAttributs){
+            result += a.toString();
+        }
+
+        return result;
+    }
+
 }

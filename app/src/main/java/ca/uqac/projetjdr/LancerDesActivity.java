@@ -21,6 +21,7 @@ public class LancerDesActivity extends AppCompatActivity implements SensorEventL
 
     public static final int MAX_SIZE = 120;
     public static final int MIN_SIZE = 80;
+    public static final String EXTRA_HISTORIQUE = "historique";
     private ImageButton buttonDesSelectionne;
     private int valeurDesSelectionne;
     private Button buttonLancerDeSelectionne;
@@ -347,7 +348,7 @@ public class LancerDesActivity extends AppCompatActivity implements SensorEventL
 
         Intent i = new Intent(this, HistoriqueDesActivity.class);
 
-        i.putExtra("historique", historiqueString);
+        i.putExtra(EXTRA_HISTORIQUE, historiqueString);
 
         startActivity(i);
     }

@@ -38,4 +38,20 @@ public class FichePersonnage {
     public List<Attribut> getListeAttributs() {
         return this.listeAttributs;
     }
+
+    public String toStringDetails(){
+
+        String result = nomPersonnage + " :\n";
+
+        for(Attribut a : listeAttributs){
+            result += a.toString();
+        }
+
+        return result;
+    }
+
+    @Override
+    public String toString(){
+        return nomPersonnage;
+    }
 }
