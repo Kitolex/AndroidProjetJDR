@@ -40,8 +40,14 @@
                 <Button
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lancer_des_des"
+                    android:text="@string/modifier"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:id="@+id/LancerDes"
+                    app:srcCompat="@mipmap/des6"
+                    android:background="@color/desClassique"
                     android:onClick="BoutonLancerDes"/>
 
             </LinearLayout>
