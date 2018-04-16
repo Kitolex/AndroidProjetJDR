@@ -27,6 +27,9 @@
             android:name=".ModifierActivite"
             android:screenOrientation="portrait" />
         <activity
+            android:name=".AffichageActivite"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".SupprimerActivite"
             android:screenOrientation="portrait" />
         <activity

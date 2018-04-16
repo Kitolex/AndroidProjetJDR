@@ -39,7 +39,7 @@ public class ListeFichesActivity extends ListActivity {
 
         Log.i("JDR_LOG", Integer.toString(fiche.getId()));
 
-        Intent i = new Intent(this, ModifierActivite.class);
+        Intent i = new Intent(this, AffichageActivite.class);
 
         i.putExtra(EXTRA_ID_FICHE, fiche.getId());
 
