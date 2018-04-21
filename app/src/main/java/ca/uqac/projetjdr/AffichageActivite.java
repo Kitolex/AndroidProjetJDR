@@ -34,6 +34,16 @@ public class AffichageActivite extends AppCompatActivity {
 
         number = 1;
 
+
+
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+        LinearLayout mylayout = findViewById(R.id.affichage);
+        mylayout.removeAllViews();
         Intent intent = getIntent();
 
         int id = intent.getIntExtra(EXTRA_ID_FICHE, -1);
@@ -44,16 +54,8 @@ public class AffichageActivite extends AppCompatActivity {
 
         Log.i("JDR_LOG", fiche.toStringDetails());
 
+
         CreerAffichage(fiche);
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();  // Always call the superclass method first
-
-
     }
 
     private void CreerAffichage(FichePersonnage fiche){

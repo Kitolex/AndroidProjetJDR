@@ -74,6 +74,7 @@ public class ModifierActivite extends AppCompatActivity {
             textview.setTag("attribName_"+number);
             textview.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 20);
             textview.setTypeface(null, Typeface.BOLD);
+            textview.setId(attribut.getId());
             layout.addView(textview);
             l.addView(layout);
             List<Attribut> listeSousAttributs = attribut.getListeSousAttributs();
@@ -85,6 +86,7 @@ public class ModifierActivite extends AppCompatActivity {
             TextView textview = new TextView(getApplicationContext());
             textview.setText(attribut.getNom());
             textview.setTag("attribName_"+number);
+            textview.setId(attribut.getId());
             EditText edittext = new EditText(getApplicationContext());
             edittext.setTag("attribValue_"+number);
             edittext.setText(attribut.getValeur());
@@ -115,8 +117,10 @@ public class ModifierActivite extends AppCompatActivity {
                     edit = (EditText) listAttribut.get(0);
                 if(listAttribut.size() != 0) {
                     attr = new Attribut(text.getText().toString(), edit.getText().toString());
+                    attr.setId(text.getId());
                 }else{
                     attr =new Attribut(text.getText().toString(), "none");
+                    attr.setId(text.getId());
                 }
                 attr.setListeSousAttributs(getAttribs(baseTag + "attribName_" + count));
                 //db.updateAttribut(attr);
@@ -158,8 +162,8 @@ public class ModifierActivite extends AppCompatActivity {
         for (Attribut attri: list) {
 
             db.updateAttribut(attri);
-            Log.i("JDR", attri.getId() + " " +attri.getNom() + "  " + attri.getValeur());
-           Log.i("JDR", "" + db.getAttribut(attri.getId()));
+           /* Log.i("JDR", attri.getId() + " " +attri.getNom() + "  " + attri.getValeur());
+           Log.i("JDR", "" + db.getAttribut(attri.getId()));*/
 
         }
 
