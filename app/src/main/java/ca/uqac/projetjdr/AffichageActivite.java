@@ -17,6 +17,8 @@ import java.util.List;
 import ca.uqac.projetjdr.jdr.Attribut;
 import ca.uqac.projetjdr.jdr.FichePersonnage;
 
+import static ca.uqac.projetjdr.ListeFichesActivity.EXTRA_ID_FICHE;
+
 /**
  * Created by guillaume on 25/03/2018.
  */
@@ -34,7 +36,7 @@ public class AffichageActivite extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        int id = intent.getIntExtra(ListeFichesActivity.EXTRA_ID_FICHE, -1);
+        int id = intent.getIntExtra(EXTRA_ID_FICHE, -1);
 
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());
 
@@ -45,6 +47,13 @@ public class AffichageActivite extends AppCompatActivity {
         CreerAffichage(fiche);
 
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
+
+
     }
 
     private void CreerAffichage(FichePersonnage fiche){
@@ -93,5 +102,16 @@ public class AffichageActivite extends AppCompatActivity {
     public void BoutonLancerDes(View view) {
         Intent intent = new Intent(AffichageActivite.this, LancerDesActivity.class);
         startActivity(intent);
+    }
+
+    public void BoutonModifier(View view) {
+        Intent intent = getIntent();
+
+        int id = intent.getIntExtra(EXTRA_ID_FICHE, -1);
+
+        Intent i = new Intent(AffichageActivite.this, ModifierActivite.class);
+        i.putExtra(EXTRA_ID_FICHE, id);
+
+        startActivity(i);
     }
 }
