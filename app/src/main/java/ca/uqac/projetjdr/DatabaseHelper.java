@@ -217,14 +217,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + " WHERE " + KEY_ID + " = " + attr_id;
 
         Cursor c = db.rawQuery(selectQuery, null);
-        if (c != null)
+        if (c != null) {
             c.moveToFirst();
-        try {
-            a = new Attribut(c.getString(c.getColumnIndex(KEY_ATTR_NAME)), c.getString(c.getColumnIndex(KEY_VALUE)));
-            a.setId(c.getInt(c.getColumnIndex(KEY_ID)));
-            a.setListeSousAttributs(getAllSousAttribut(a));
-        }catch (ValeurImpossibleException e){
-            e.printStackTrace();
+            if(c.getCount()>0){
+                try {
+                    a = new Attribut(c.getString(c.getColumnIndex(KEY_ATTR_NAME)), c.getString(c.getColumnIndex(KEY_VALUE)));
+                    a.setId(c.getInt(c.getColumnIndex(KEY_ID)));
+                    a.setListeSousAttributs(getAllSousAttribut(a));
+                } catch (ValeurImpossibleException e) {
+                    e.printStackTrace();
+                }
+            }
         }
         c.close();
         return a;
