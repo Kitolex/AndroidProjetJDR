@@ -160,11 +160,7 @@ public class ModifierActivite extends AppCompatActivity {
         List<Attribut> list = getAttribs("");
 
         for (Attribut attri: list) {
-
             db.updateAttribut(attri);
-           /* Log.i("JDR", attri.getId() + " " +attri.getNom() + "  " + attri.getValeur());
-           Log.i("JDR", "" + db.getAttribut(attri.getId()));*/
-
         }
 
         db.close();

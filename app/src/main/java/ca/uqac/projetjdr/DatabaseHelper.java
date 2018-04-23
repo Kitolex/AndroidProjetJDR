@@ -172,11 +172,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
     * Deleting a fiche
     */
-    public void deleteFiche(long fiche_id) {
+    public void deleteFiche(FichePersonnage fiche) {
 
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TABLE_FICHE, KEY_ID + " = ?",
-                new String[] { String.valueOf(fiche_id) });
+                new String[] { String.valueOf(fiche.getId()) });
     }
 
     // ATTRIBUT-------------------------------------------------------------------------------------
@@ -316,18 +316,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     /*
     * Deleting an attribut
     */
-    public void deleteAttribut(long attr_id) {
+    public void deleteAttribut(Attribut attr) {
 
         SQLiteDatabase db = this.getWritableDatabase();
 
-        Attribut attr = getAttribut(attr_id);
-
         for (Attribut a:  attr.getListeSousAttributs()) {
-            deleteAttribut(a.getId());
+            deleteAttribut(a);
         }
 
         db.delete(TABLE_ATTRIBUT, KEY_ID + " = ?",
-                new String[] { String.valueOf(attr_id) });
+                new String[] { String.valueOf(attr.getId()) });
     }
 
 

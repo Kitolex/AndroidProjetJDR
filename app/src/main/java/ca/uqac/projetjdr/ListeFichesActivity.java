@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.List;
@@ -23,13 +24,18 @@ public class ListeFichesActivity extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_liste_fiches);
 
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();  // Always call the superclass method first
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());
 
         List<FichePersonnage> listeFiches = db.getAllFiches();
 
         setListAdapter(new ArrayAdapter<FichePersonnage>(this, android.R.layout.simple_list_item_1, listeFiches));
 
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
