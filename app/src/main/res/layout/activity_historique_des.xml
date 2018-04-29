@@ -16,11 +16,12 @@
             android:id="@+id/historiqueDes_historiqueTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="30dp"/>
+            android:textSize="30sp"/>
 
     </ScrollView>
 
     <Button
+        style="@style/AppTheme.RoundedCornerMaterialButton"
         android:id="@+id/historiqueDes_retour"
         android:layout_width="match_parent"
         android:layout_height="0dp"

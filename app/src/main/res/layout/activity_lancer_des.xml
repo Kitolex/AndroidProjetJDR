@@ -102,6 +102,7 @@
         android:textAlignment="center" />
 
     <Button
+        style="@style/AppTheme.RoundedCornerMaterialButton"
         android:id="@+id/lancerDes_lancerDesButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -110,6 +111,7 @@
         android:text="@string/lancer_le_de" />
 
     <Button
+        style="@style/AppTheme.RoundedCornerMaterialButton"
         android:id="@+id/lancerDes_retour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -117,6 +119,7 @@
         android:text="@string/retour" />
 
     <Button
+        style="@style/AppTheme.RoundedCornerMaterialButton"
         android:id="@+id/lancerDes_historique"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -130,6 +133,7 @@
         android:orientation="horizontal">
 
         <Button
+            style="@style/AppTheme.RoundedCornerMaterialButton"
             android:id="@+id/lancerDes_nbDesDown"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -145,6 +149,7 @@
             android:textAlignment="center"/>
 
         <Button
+            style="@style/AppTheme.RoundedCornerMaterialButton"
             android:id="@+id/lancerDes_nbDesUp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -153,6 +158,7 @@
             android:text="@string/plus1" />
 
         <Button
+            style="@style/AppTheme.RoundedCornerMaterialButton"
             android:id="@+id/lancerDes_ajoutFixeDown"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -168,6 +174,7 @@
             android:textAlignment="center"/>
 
         <Button
+            style="@style/AppTheme.RoundedCornerMaterialButton"
             android:id="@+id/lancerDes_ajoutFixeUp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

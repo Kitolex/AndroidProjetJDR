@@ -247,7 +247,7 @@ public class LancerDesActivity extends AppCompatActivity implements SensorEventL
 
         buttonDesSelectionne = buttonNewSelectedDice;
 
-        buttonDesSelectionne.setBackgroundColor(getResources().getColor(R.color.desSelectionne));
+        buttonDesSelectionne.setBackgroundColor(getResources().getColor(R.color.buttonBackground));
 
         buttonLancerDeSelectionne.setEnabled(true);
 

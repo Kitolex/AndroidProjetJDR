@@ -34,7 +34,7 @@ public class ListeFichesActivity extends ListActivity {
 
         List<FichePersonnage> listeFiches = db.getAllFiches();
 
-        setListAdapter(new ArrayAdapter<FichePersonnage>(this, android.R.layout.simple_list_item_1, listeFiches));
+        setListAdapter(new ArrayAdapter<FichePersonnage>(this, R.layout.liste_fiche_item, listeFiches));
 
     }
 

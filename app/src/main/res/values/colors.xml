@@ -6,4 +6,5 @@
     <color name="desClassique">#ffffff</color>
     <color name="desSelectionne">#00FF00</color>
     <color name="buttonBackground">#ff8044</color>
+    <color name="textBlanc">#ffffff</color>
 </resources>

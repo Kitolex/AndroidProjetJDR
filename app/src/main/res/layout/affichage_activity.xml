@@ -39,6 +39,7 @@
 
 
                 <Button
+                    style="@style/AppTheme.RoundedCornerMaterialButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="BoutonSupprimer"
@@ -46,6 +47,7 @@
                     android:text="@string/supprimer"/>
 
                 <Button
+                    style="@style/AppTheme.RoundedCornerMaterialButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:onClick="BoutonModifier"
