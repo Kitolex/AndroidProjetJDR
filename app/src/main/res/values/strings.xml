@@ -14,4 +14,7 @@
     <string name="lancer_des_des">Lancer des dés</string>
     <string name="modifier">Modifier</string>
     <string name="supprimer">Supprimer</string>
+    <string name="mes_fiches">Mes fiches</string>
+    <string name="importer_un_mod_le_de_fiche">Importer un modèle de fiche</string>
+    <string name="icone">icone</string>
 </resources>

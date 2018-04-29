@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="desClassique">#ffffff</color>
     <color name="desSelectionne">#00FF00</color>
+    <color name="buttonBackground">#ff8044</color>
 </resources>

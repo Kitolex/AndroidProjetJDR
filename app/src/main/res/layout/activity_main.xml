@@ -7,59 +7,56 @@
     android:orientation="vertical"
     tools:context="ca.uqac.projetjdr.MainActivity">
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="50"
-            android:orientation="vertical">
 
-        </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="50"
+        android:gravity="center"
+        android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="295dp"
+            android:layout_height="167dp"
+            android:layout_marginBottom="20dp"
+            android:contentDescription="@string/icone"
+            app:srcCompat="@mipmap/ic_launcher" />
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="50"
-            android:orientation="vertical">
+        <Button
+            android:id="@+id/Creer"
+            style="@style/AppTheme.RoundedCornerMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="BoutonCreer"
+            android:text="@string/creer_une_fiche_perso" />
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Créer une fiche perso"
-                android:id="@+id/Creer"
-                android:onClick="BoutonCreer"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Fiche Perso"
-                android:id="@+id/Modifier"
-                android:onClick="BoutonModifier"/>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Supprimer une fiche perso"
-                android:id="@+id/Supprimer"
-                android:onClick="BoutonSupprimer"/>
+        <Button
+            android:id="@+id/MesFiches"
+            style="@style/AppTheme.RoundedCornerMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="BoutonMesFiches"
+            android:text="@string/mes_fiches" />
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Importer une fiche perso type"
-                android:id="@+id/Importer"
-                android:onClick="BoutonImporter"/>
+        <Button
+            android:id="@+id/Importer"
+            style="@style/AppTheme.RoundedCornerMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="BoutonImporter"
+            android:text="@string/importer_un_mod_le_de_fiche" />
 
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/lancer_des_des"
-                android:id="@+id/LancerDes"
-                android:onClick="BoutonLancerDes"/>
+        <Button
+            android:id="@+id/LancerDes"
+            style="@style/AppTheme.RoundedCornerMaterialButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="BoutonLancerDes"
+            android:text="@string/lancer_des_des" />
 
-        </LinearLayout>
+    </LinearLayout>
 
 
 </android.support.constraint.ConstraintLayout>
