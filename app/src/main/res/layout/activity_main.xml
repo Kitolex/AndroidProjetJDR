@@ -40,15 +40,6 @@
 
 
         <Button
-            android:id="@+id/Importer"
-            style="@style/AppTheme.RoundedCornerMaterialButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="BoutonImporter"
-            android:text="@string/importer_un_mod_le_de_fiche" />
-
-
-        <Button
             android:id="@+id/LancerDes"
             style="@style/AppTheme.RoundedCornerMaterialButton"
             android:layout_width="match_parent"

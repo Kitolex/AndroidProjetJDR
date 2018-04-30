@@ -30,16 +30,10 @@
             android:name=".AffichageActivite"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".SupprimerActivite"
-            android:screenOrientation="portrait" />
-        <activity
             android:name=".LancerDesActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".HistoriqueDesActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".ImporterActivite"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ListeFichesActivity"

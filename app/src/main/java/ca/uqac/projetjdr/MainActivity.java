@@ -1,14 +1,20 @@
 package ca.uqac.projetjdr;
 
+import android.app.Activity;
 import android.content.Intent;
 
 import android.content.pm.ActivityInfo;
+import android.net.Uri;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int READ_REQUEST_CODE = 42;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +31,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void BoutonMesFiches(View view) {
         Intent intent = new Intent(MainActivity.this, ListeFichesActivity.class);
-        startActivity(intent);
-    }
-
-    public void BoutonImporter(View view) {
-        Intent intent = new Intent(MainActivity.this, ImporterActivite.class);
         startActivity(intent);
     }
 

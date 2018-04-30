@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<fichePersoType>
+  <Attributs>
+	<Chapeau valeur="1">
+		<Couleur valeur="1"/>
+		<Taille valeur="1"/>
+	</Chapeau>
+	 <Costume valeur="1">
+	  <Cravate valeur="1"/>
+	  <Veste valeur="1"/>
+  	</Costume>
+    <Chaussures valeur="1">
+      <Lacets valeur="1"/>
+      <Semelle valeur="1"/>
+    </Chaussures>
+  </Attributs>
+  
+</fichePersoType>

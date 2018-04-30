@@ -2,9 +2,12 @@ package ca.uqac.projetjdr;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.TypedValue;
@@ -22,6 +25,8 @@ import android.widget.Toast;
 import org.w3c.dom.Attr;
 import org.xml.sax.SAXException;
 
+import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -41,6 +46,9 @@ import ca.uqac.projetjdr.util.XMLUtil;
 
 public class CreationActivite extends Activity {
 
+    private String state = Environment.getExternalStorageState();
+    private static final int READ_REQUEST_CODE = 42;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,34 +63,33 @@ public class CreationActivite extends Activity {
             }
         });
 
-        Spinner spinner1 = (Spinner) findViewById(R.id.spinner1);
+        Uri selectedUri = Uri.parse(Environment.DIRECTORY_DOWNLOADS);
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.setDataAndType(selectedUri,"text/xml");
 
-        ArrayList<String> listeFichier = new ArrayList<>();
+        startActivityForResult(intent, READ_REQUEST_CODE);
 
-        try {
-            String[] ss = getAssets().list("");
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
 
-            for(String s : ss){
-                if(s.matches(".+[.]xml$")){
-                    listeFichier.add(s.substring(0, s.length() - 4));
-                }
-            }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // The ACTION_OPEN_DOCUMENT intent was sent with the request code
+        // READ_REQUEST_CODE. If the request code seen here doesn't match, it's the
+        // response to some other intent, and the code below shouldn't run at all.
 
-        ArrayAdapter dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listeFichier);
-        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(dataAdapter);
-
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                String selectedItem = parentView.getItemAtPosition(position).toString();
-
+        if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            // The document selected by the user won't be returned in the intent.
+            // Instead, a URI to that document will be contained in the return intent
+            // provided to this method as a parameter.
+            // Pull that URI using resultData.getData().
+            Uri uri = null;
+            if (resultData != null) {
+                uri = resultData.getData();
+                Log.i("LOG_JDR", "Uri: " + uri.toString());
                 try {
-                    XMLUtil xml = new XMLUtil((getAssets().open(selectedItem + ".xml")));
+                    XMLUtil xml = new XMLUtil(getContentResolver().openInputStream(uri));
                     NoeudXML res = xml.lireXML();
                     LinearLayout mylayout = findViewById(R.id.affichage);
                     mylayout.removeAllViews();
@@ -95,17 +102,17 @@ public class CreationActivite extends Activity {
                     e.printStackTrace();
                 }
             }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
-        });
-
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        }
     }
 
+    private boolean isMediaAvailable() {
+
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public void CreerAffichage(NoeudXML res, LinearLayout l, String baseTag, int number) {
         System.out.println(res.getNom());
