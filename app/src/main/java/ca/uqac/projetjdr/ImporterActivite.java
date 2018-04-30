@@ -28,13 +28,13 @@ public class ImporterActivite extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
-        intent.setType("*/*");
+        intent.setType("text/xml");
         startActivityForResult(intent, READ_REQUEST_CODE);
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode,
-                                 Intent resultData) {
+    public void onActivityResult(int requestCode, int resultCode, Intent resultData) {
+
         if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
 
             Uri uri = null;
@@ -49,16 +49,12 @@ public class ImporterActivite extends AppCompatActivity {
 
             }
         }
-
+        finish();
     }
 
-    void copyFile(Uri uri) throws IOException {
-        File f = getFilesDir();
-        System.out.println(f.listFiles().length);
-        String sourceFilename = uri.getPath();
-        String destinationFilename = getFilesDir().getAbsolutePath()+"/"+getFileName(uri);
+    private void copyFile(Uri uri) throws IOException {
 
-
+        String destinationFilename = getFilesDir().getAbsolutePath() + "/" + getFileName(uri);
 
         InputStream in = getContentResolver().openInputStream(uri);
         OutputStream out = new FileOutputStream(new File(destinationFilename));
@@ -71,13 +67,9 @@ public class ImporterActivite extends AppCompatActivity {
         }
         in.close();
         out.close();
-
-
-
-        System.out.println(f.listFiles().length);
     }
 
-    public String getFileName(Uri uri) {
+    private String getFileName(Uri uri) {
         String result = null;
         if (uri.getScheme().equals("content")) {
             Cursor cursor = getContentResolver().query(uri, null, null, null, null);
@@ -98,10 +90,5 @@ public class ImporterActivite extends AppCompatActivity {
         }
         System.out.println(result);
         return result;
-
     }
-
-
-
-
 }

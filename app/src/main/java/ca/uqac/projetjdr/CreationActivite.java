@@ -22,6 +22,7 @@ import android.widget.Toast;
 import org.w3c.dom.Attr;
 import org.xml.sax.SAXException;
 
+import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -60,15 +61,14 @@ public class CreationActivite extends Activity {
         ArrayList<String> listeFichier = new ArrayList<>();
 
         try {
-            String[] ss = getAssets().list("");
-
+            String[] ss = getFilesDir().list();
             for(String s : ss){
                 if(s.matches(".+[.]xml$")){
                     listeFichier.add(s.substring(0, s.length() - 4));
                 }
             }
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -82,7 +82,7 @@ public class CreationActivite extends Activity {
                 String selectedItem = parentView.getItemAtPosition(position).toString();
 
                 try {
-                    XMLUtil xml = new XMLUtil((getAssets().open(selectedItem + ".xml")));
+                    XMLUtil xml = new XMLUtil(new File(getFilesDir().getAbsolutePath()+"/"+ selectedItem + ".xml"));
                     NoeudXML res = xml.lireXML();
                     LinearLayout mylayout = findViewById(R.id.affichage);
                     mylayout.removeAllViews();
