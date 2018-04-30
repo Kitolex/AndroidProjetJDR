@@ -26,8 +26,6 @@ public class ImporterActivite extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent getContentIntent = FileUtils.createGetContentIntent();
-
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("*/*");
