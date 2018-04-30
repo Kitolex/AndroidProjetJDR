@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -43,12 +44,15 @@ public class ImporterActivite extends AppCompatActivity {
                 Log.i("TAG", "Uri: " + uri.toString());
                 try {
                     copyFile(uri);
+                    String fileName = getFileName(uri);
+                    Toast.makeText(getApplicationContext(), fileName.substring(0, fileName.length() - 4) + " a été importé !", Toast.LENGTH_LONG).show();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
 
             }
         }
+
         finish();
     }
 

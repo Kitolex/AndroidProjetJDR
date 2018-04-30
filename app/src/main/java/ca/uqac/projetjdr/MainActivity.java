@@ -74,14 +74,14 @@ public class MainActivity extends AppCompatActivity {
                     try {
                         in.close();
                     } catch (IOException e) {
-                        // NOOP
+                        e.printStackTrace();
                     }
                 }
                 if (out != null) {
                     try {
                         out.close();
                     } catch (IOException e) {
-                        // NOOP
+                        e.printStackTrace();
                     }
                 }
             }
